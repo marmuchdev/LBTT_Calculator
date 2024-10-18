@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LBTT_Calculator
+namespace LBTT_Calculator.TaxBand
 {
-    public class FlatRateTaxBand
+    public interface ITaxBands
     {
+        public void Add(ITaxBand band);
     }
 }

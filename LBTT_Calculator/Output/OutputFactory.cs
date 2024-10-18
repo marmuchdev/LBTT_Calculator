@@ -8,6 +8,9 @@ namespace LBTT_Calculator.Output
 {
     public class OutputFactory
     {
-        public static IOutput GetCosnoleObj() { return new ConsoleOutput(); }
+
+        //public static IOutput GetCosnoleObj() { return new ConsoleOutput(); }
+
+        public IOutput Create() { return new ConsoleOutput(); }
     }
 }

@@ -8,5 +8,6 @@ namespace LBTT_Calculator
 {
     public class TaxableAmount
     {
+       
     }
 }
