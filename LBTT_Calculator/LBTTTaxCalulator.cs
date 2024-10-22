@@ -20,6 +20,17 @@ namespace LBTT_Calculator
             this.purchasePrice = purchasePrice;
             this.totalTax = 0;
         }
+
+        public LBTTTaxCalulator(IOutput output, List<ITaxBand> taxBandList)
+        {
+            this.output = output;
+            this.taxBandsList = taxBandList;
+            this.totalTax = 0;
+        }
+
+
+
+
         public double CalculateTax()
         {
             foreach (var taxBand in taxBandsList)
