@@ -11,9 +11,9 @@ class Application
 
     public void Run()
     {
-        Console.WriteLine("Hello World!");
-      
-        IOutput output = new ConsoleOutput();
+        Console.WriteLine("LBTT CALCULATOR");
+
+        IOutput output = new OutputFactory().Create();
         double taxableAmount = 875000;
         List<ITaxBand> taxBandsList = new List<ITaxBand>();
 
@@ -31,9 +31,7 @@ class Application
 
         LBTTTaxCalulator calc1 = new LBTTTaxCalulator(output, taxBandsList, taxableAmount);
 
-        double result = calc1.CalculateTax();
-
-        Console.WriteLine(result);
+        calc1.CalculateTax();
 
 
     }

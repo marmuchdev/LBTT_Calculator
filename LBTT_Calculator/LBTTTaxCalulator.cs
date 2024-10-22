@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace LBTT_Calculator
 {
-    public class LBTTTaxCalulator
+    public class LBTTTaxCalulator 
     {
         private double purchasePrice { get; set; }
         IOutput output;
