@@ -32,7 +32,12 @@ class Application
         LBTTTaxCalulator calc1 = new LBTTTaxCalulator(output, taxBandsList, taxableAmount);
 
         calc1.CalculateTax();
+        var stdCalc = new TaxCalculatorFactory().CreateStandardResidential();
+        var result = stdCalc.CalculateTax(875000);
+        Console.WriteLine("Standard Calculator LBTT = "+ result);
 
+        var firstTimeBuyersCalcResult= new TaxCalculatorFactory().CreateFirstTimeBuyer().CalculateTax(875000);
+        Console.WriteLine("First Time Buyers Calculator LBTT = " + firstTimeBuyersCalcResult);
 
     }
 }
