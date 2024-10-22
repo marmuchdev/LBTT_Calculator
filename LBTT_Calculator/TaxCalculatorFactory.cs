@@ -11,6 +11,8 @@ namespace LBTT_Calculator
     {
         public StandardCalculator CreateStandardResidential() { return new StandardCalculator(); }
         public FirstTimeBuyerCalculator CreateFirstTimeBuyer() { return new FirstTimeBuyerCalculator(); }
+        public AdditionalDwellingSupplementCalculator CreateAdditionalDwellingSupplementCalculator() { return new AdditionalDwellingSupplementCalculator(); }
+
 
     }
 }

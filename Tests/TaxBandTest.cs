@@ -152,21 +152,7 @@ namespace Tests
             Assert.That(result, Is.EqualTo(expected));
         }
 
-        [Test]
-        public void Apply0PCTaxBandForMockTaxBandNoRange()
-        {
-            //Arrange
-            //mockTaxBandNoRange = new MockTaxBandNoRange(0);
-            TaxBandNoTax taxBandNoRange = new TaxBandNoTax();
 
-            double taxableAmount = 15000;
-            double expected = 0;
-
-            //Act
-            double result = taxBandNoRange.Apply(taxableAmount);
-            //Assign
-            Assert.That(result, Is.EqualTo(expected));
-        }
 
         [Test]
         public void Apply8PCTaxBandForMockTaxBandNoRange()
@@ -252,13 +238,11 @@ namespace Tests
             double expected = 1800;
             List<ITaxBand> taxBandsList = new List<ITaxBand>();
 
-            ITaxBand taxBand0 = new TaxBandNoTax();
             ITaxBand taxBand2 = new TaxBandWithRange(2, 145001, 250000);
             ITaxBand taxBand5 = new TaxBandWithRange(5, 250001, 325000);
             ITaxBand taxBand10 = new TaxBandWithRange(10, 325001, 750000);
             ITaxBand tax12 = new TaxBandOneLimit(12, 750001);
 
-            taxBandsList.Add(taxBand0);
             taxBandsList.Add(taxBand2);
             taxBandsList.Add(taxBand5);
             taxBandsList.Add(taxBand10);
@@ -284,13 +268,11 @@ namespace Tests
             double expected = 0;
             List<ITaxBand> taxBandsList = new List<ITaxBand>();
 
-            ITaxBand taxBand0 = new TaxBandNoTax();
             ITaxBand taxBand2 = new TaxBandWithRange(2, 145001, 250000);
             ITaxBand taxBand5 = new TaxBandWithRange(5, 250001, 325000);
             ITaxBand taxBand10 = new TaxBandWithRange(10, 325001, 750000);
             ITaxBand tax12 = new TaxBandOneLimit(12, 750001);
 
-            taxBandsList.Add(taxBand0);
             taxBandsList.Add(taxBand2);
             taxBandsList.Add(taxBand5);
             taxBandsList.Add(taxBand10);
@@ -317,13 +299,11 @@ namespace Tests
             string expected_output = "For 875000 LBTTax = 63350";
             List<ITaxBand> taxBandsList = new List<ITaxBand>();
 
-            ITaxBand taxBand0 = new TaxBandNoTax();
             ITaxBand taxBand2 = new TaxBandWithRange(2, 145001, 250000);
             ITaxBand taxBand5 = new TaxBandWithRange(5, 250001, 325000);
             ITaxBand taxBand10 = new TaxBandWithRange(10, 325001, 750000);
             ITaxBand tax12 = new TaxBandOneLimit(12, 750001);
 
-            taxBandsList.Add(taxBand0);
             taxBandsList.Add(taxBand2);
             taxBandsList.Add(taxBand5);
             taxBandsList.Add(taxBand10);
