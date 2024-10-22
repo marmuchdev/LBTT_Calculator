@@ -311,9 +311,10 @@ namespace Tests
         public void CalculateTaxFor875000()
         {
             //Arrange
-            IOutput output = new ConsoleOutput();
+            MockOutput output = new MockOutput();
             double taxableAmount = 875000;
             double expected = 63350;
+            string expected_output = "For 875000 LBTTax = 63350";
             List<ITaxBand> taxBandsList = new List<ITaxBand>();
 
             ITaxBand taxBand0 = new TaxBandNoTax();
@@ -333,10 +334,13 @@ namespace Tests
 
             //Act
             double result = calc1.CalculateTax();
+            string result_standard_output = output.actual;
 
 
             //Assign
             Assert.That(result, Is.EqualTo(expected));
+            Assert.That(result_standard_output, Is.EqualTo(expected_output));
+
         }
 
 
