@@ -1,6 +1,4 @@
-﻿using LBTT_Calculator.Output;
-using LBTT_Calculator.TaxBand;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
