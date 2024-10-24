@@ -39,7 +39,11 @@ namespace LBTT_Calculator.TaxBand
 
         public double Apply(TransactionDetails t)
         {
-            throw new NotImplementedException();
+            double taxableAmount = t.PurchasePrice;
+            if (taxableAmount < lowerLimit) taxableAmount = 0;
+            else if (taxableAmount > upperLimit) taxableAmount = upperLimit - lowerLimit;
+            else taxableAmount = taxableAmount - lowerLimit;
+            return Math.Round(taxableAmount * (taxRate / 100));
         }
     }
 }
