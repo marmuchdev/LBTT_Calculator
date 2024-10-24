@@ -260,6 +260,94 @@ namespace Tests
         }
 
         [Test]
+        public void CalculateTaxFor235000UsingStandardCalculator()
+        {
+            //Arrange
+            MockOutput output = new MockOutput();
+            double taxableAmount = 235000;
+            double expected = 1800;
+
+
+            var stdCalc = new TaxCalculatorFactory().CreateStandardResidential();
+
+
+            //Act
+            var result = stdCalc.CalculateTax(taxableAmount);
+
+
+            //Assign
+            Assert.That(result, Is.EqualTo(expected));
+
+        }
+
+        [Test]
+        public void CalculateTaxFor235000UsingFirstTimeBuyerCalculator()
+        {
+            //Arrange
+            MockOutput output = new MockOutput();
+            double taxableAmount = 235000;
+            double expected = 1200;
+
+
+            var stdCalc = new TaxCalculatorFactory().CreateFirstTimeBuyer();
+
+
+            //Act
+            var result = stdCalc.CalculateTax(taxableAmount);
+
+
+            //Assign
+            Assert.That(result, Is.EqualTo(expected));
+
+        }
+
+        [Test]
+        public void CalculateTaxFor875000UsingADSSupplementCalculatorWithADSamountUnderTresholdOf40000()
+        {
+            //Arrange
+            MockOutput output = new MockOutput();
+            double taxableAmount = 875000;
+            double ADSAmount = 30000;
+            double expected = 63350;
+
+
+            var ADSCalcResult = new TaxCalculatorFactory().CreateAdditionalDwellingSupplementCalculator();
+
+
+
+            //Act
+            var result = ADSCalcResult.CalculateTax(taxableAmount, ADSAmount);
+
+
+            //Assign
+            Assert.That(result, Is.EqualTo(expected));
+
+        }
+
+        [Test]
+        public void CalculateTaxFor875000UsingADSSupplementCalculatorWithADSamountAboveTresholdOf40000()
+        {
+            //Arrange
+            MockOutput output = new MockOutput();
+            double taxableAmount = 875000;
+            double ADSAmount = 45000;
+            double expected = 66050;
+
+
+            var ADSCalcResult = new TaxCalculatorFactory().CreateAdditionalDwellingSupplementCalculator();
+
+
+
+            //Act
+            var result = ADSCalcResult.CalculateTax(taxableAmount, ADSAmount);
+
+
+            //Assign
+            Assert.That(result, Is.EqualTo(expected));
+
+        }
+
+        [Test]
         public void CalculateTaxFor135000()
         {
             //Arrange
