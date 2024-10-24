@@ -8,7 +8,7 @@ namespace LBTT_Calculator
 {
     public interface ITaxBand
     {
-        //public void Apply(TaxableAmount t);
+        public double Apply(TransactionDetails t);
         public double Apply(double taxableAmount);
         public void Display(IOutput output);
 
