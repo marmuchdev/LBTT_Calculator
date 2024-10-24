@@ -36,5 +36,10 @@ namespace LBTT_Calculator.TaxBand
         {
             output.Write("Tax rate: " + taxRate + " Range: " + lowerLimit + "-" + upperLimit);
         }
+
+        public double Apply(TransactionDetails t)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

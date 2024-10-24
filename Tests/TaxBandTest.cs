@@ -69,6 +69,10 @@ namespace Tests
             throw new NotImplementedException();
         }
 
+        public double Apply(TransactionDetails t)
+        {
+            throw new NotImplementedException();
+        }
     }
 
     internal class MockTaxBandWithRange : ITaxBand
@@ -95,6 +99,11 @@ namespace Tests
         {
             throw new NotImplementedException();
         }
+
+        public double Apply(TransactionDetails t)
+        {
+            throw new NotImplementedException();
+        }
     }
 
     internal class MockFlatRateTaxBand : ITaxBand
@@ -103,6 +112,11 @@ namespace Tests
         public double Apply(double taxableAmount)
         {
             return taxableAmount + flatRateTax;
+        }
+
+        public double Apply(TransactionDetails t)
+        {
+            throw new NotImplementedException();
         }
 
         public void Display(IOutput output)
