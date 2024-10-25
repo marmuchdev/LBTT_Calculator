@@ -29,11 +29,11 @@ namespace LBTT_Calculator
 
 
 
-        public double CalculateTax()
+        public double CalculateTax(TransactionDetails t)
         {
             foreach (var taxBand in taxBandsList)
             {
-                totalTax = totalTax + taxBand.Apply(purchasePrice);
+                totalTax = totalTax + taxBand.Apply(t);
             }
             DisplayCalculatedTax();
             return totalTax;
