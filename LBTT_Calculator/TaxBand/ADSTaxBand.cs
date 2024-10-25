@@ -22,10 +22,9 @@ namespace LBTT_Calculator.TaxBand
             if (taxableAmount < treshold) return 0;
             return Math.Round(taxableAmount * (taxRate / 100));
         }
-
         public void Display(IOutput output)
         {
-            throw new NotImplementedException();
+            output.Write("ADS tax rate: " + taxRate);
         }
 
     }
