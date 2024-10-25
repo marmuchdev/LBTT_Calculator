@@ -21,14 +21,6 @@ namespace LBTT_Calculator.TaxBand
             this.output = new ConsoleOutput();
             this.lowerLimit = lowerLimit;   
         }
-        public double Apply(double taxableAmount)
-        {
-            if (taxableAmount < lowerLimit) return 0;
-            taxableAmount-=lowerLimit;
-            return Math.Round(taxableAmount * (taxRate / 100));
-
-        }
-
         public void Display(IOutput output)
         {
             output.Write("Tax rate: "+ taxRate);

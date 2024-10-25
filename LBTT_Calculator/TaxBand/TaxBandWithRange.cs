@@ -24,14 +24,6 @@ namespace LBTT_Calculator.TaxBand
 
         }
 
-        public double Apply(double taxableAmount)
-        {
-            if (taxableAmount < lowerLimit) taxableAmount = 0;
-            else if (taxableAmount > upperLimit) taxableAmount = upperLimit - lowerLimit;
-            else taxableAmount = taxableAmount - lowerLimit;
-            return Math.Round(taxableAmount * (taxRate / 100));
-        }
-
         public void Display(IOutput output)
         {
             output.Write("Tax rate: " + taxRate + " Range: " + lowerLimit + "-" + upperLimit);

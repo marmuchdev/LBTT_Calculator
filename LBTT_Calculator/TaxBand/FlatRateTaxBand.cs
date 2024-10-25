@@ -17,10 +17,6 @@ namespace LBTT_Calculator.TaxBand
             this.flatRateTax = flatRateTax;
         }
 
-        public double Apply(double taxableAmount)
-        {
-            return taxableAmount + flatRateTax;
-        }
         public void Display(IOutput output)
         {
             output.Write("Flat Tax rate: " + flatRateTax);

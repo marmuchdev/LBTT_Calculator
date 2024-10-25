@@ -23,15 +23,10 @@ namespace LBTT_Calculator.TaxBand
             return Math.Round(taxableAmount * (taxRate / 100));
         }
 
-        public double Apply(double taxableAmount)
-        {
-            throw new NotImplementedException();
-        }
-
         public void Display(IOutput output)
         {
             throw new NotImplementedException();
         }
-        public double GetTreshold() { return treshold; }
+
     }
 }
