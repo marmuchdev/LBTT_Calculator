@@ -23,11 +23,18 @@ a:hover {
 }
 
 body {
-  margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
+  background: linear-gradient(135deg, #d1cccc, #f8f9fa); /* Whitish gradient background */
+  margin: 0; /* Remove default margin */
+  font-family: Arial, sans-serif; /* Set a global font-family */
+  height: 100vh; /* Make sure it covers full height */
+  display: flex; /* Allow flexbox layout */
+  align-items: center; /* Center content vertically */
+  justify-content: center; /* Center content horizontally */
+}
+
+.container {
+  max-width: 600px;
+  margin: auto;
 }
 
 h1 {
