@@ -16,15 +16,15 @@ namespace LBTT_Calculator
 
         public ResidentialCalculator()
         {
-            this.taxBandsList = new BandFactory().CreateStandard();
+            this.taxBandsList = new TaxBandFactory().CreateStandard();
             calc = new LBTTTaxCalulator(new OutputFactory().Create(), taxBandsList);
-            this.ADStaxBand = new BandFactory().CreateADS();
+            this.ADStaxBand = new TaxBandFactory().CreateADS();
         }
 
         public double CalculateTax(TransactionDetails t)
         {
-            if (t.IsFirstTimeBuyers){ taxBandsList = new BandFactory().CreateFTBRelief();}
-            else { taxBandsList = new BandFactory().CreateStandard(); }
+            if (t.IsFirstTimeBuyers){ taxBandsList = new TaxBandFactory().CreateFTBRelief();}
+            else { taxBandsList = new TaxBandFactory().CreateStandard(); }
             double totalTax = 0;
             foreach (var taxBand in taxBandsList)
             {

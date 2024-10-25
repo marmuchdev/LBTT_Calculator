@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace LBTT_Calculator
 {
-    public class BandFactory
+    public class TaxBandFactory
     {
         public List<ITaxBand> taxBandsList { get; set; }
         public List<ITaxBand> CreateStandard()
