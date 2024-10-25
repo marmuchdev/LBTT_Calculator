@@ -15,10 +15,13 @@ const TransactionForm = () => {
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
 
+    // Ensure non-negative values for purchasePrice and ADSamount
+    const validValue = type === 'number' && value < 0 ? 0 : value;
+
     setTransactionDetails((prev) => {
       const newDetails = { 
         ...prev, 
-        [name]: type === 'checkbox' ? checked : value 
+        [name]: type === 'checkbox' ? checked : validValue 
       };
 
       if (name === 'isADSEnabled') {
@@ -59,6 +62,7 @@ const TransactionForm = () => {
                 value={transactionDetails.purchasePrice}
                 onChange={handleChange}
                 required
+                min="0" // Prevent negative input
               />
             </div>
             
@@ -83,6 +87,7 @@ const TransactionForm = () => {
                   value={transactionDetails.ADSamount}
                   onChange={handleChange}
                   required
+                  min="0" // Prevent negative input
                 />
               </div>
             )}
