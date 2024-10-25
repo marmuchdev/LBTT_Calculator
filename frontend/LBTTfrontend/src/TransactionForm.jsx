@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 const TransactionForm = () => {
   const [transactionDetails, setTransactionDetails] = useState({
     purchasePrice: '',
-    ADSamount: '',
+    ADSamount: 0, // Default value
     isFirstTimeBuyers: false,
+    isADSEnabled: false, // Toggle for ADS
   });
   const [calculatedTax, setCalculatedTax] = useState(null);
 
@@ -29,46 +31,63 @@ const TransactionForm = () => {
   };
 
   return (
-    <div>
-      <h1>Residential Tax Calculator</h1>
-      <form onSubmit={submitForm}>
-        <div>
-          <label htmlFor="purchasePrice">Purchase Price:</label>
+    <div className="container mt-5">
+      <h1 className="text-center">Residential Tax Calculator</h1>
+      <form onSubmit={submitForm} className="border p-4 rounded shadow">
+        <div className="mb-3">
+          <label htmlFor="purchasePrice" className="form-label">Purchase Price:</label>
           <input
             name="purchasePrice"
             type="number"
+            className="form-control"
             value={transactionDetails.purchasePrice}
             onChange={handleChange}
             required
           />
         </div>
-        <div>
-          <label htmlFor="ADSamount">ADS Amount:</label>
+        
+        <div className="mb-3 form-check">
           <input
-            name="ADSamount"
-            type="number"
-            value={transactionDetails.ADSamount}
+            name="isADSEnabled"
+            type="checkbox"
+            className="form-check-input"
+            checked={transactionDetails.isADSEnabled}
             onChange={handleChange}
-            required
           />
+          <label className="form-check-label">Include ADS Amount?</label>
         </div>
-        <div>
-          <label>
+
+        {transactionDetails.isADSEnabled && (
+          <div className="mb-3">
+            <label htmlFor="ADSamount" className="form-label">ADS Amount:</label>
             <input
-              name="isFirstTimeBuyers"
-              type="checkbox"
-              checked={transactionDetails.isFirstTimeBuyers}
+              name="ADSamount"
+              type="number"
+              className="form-control"
+              value={transactionDetails.ADSamount}
               onChange={handleChange}
+              required
             />
-            Is First Time Buyer?
-          </label>
+          </div>
+        )}
+
+        <div className="mb-3 form-check">
+          <input
+            name="isFirstTimeBuyers"
+            type="checkbox"
+            className="form-check-input"
+            checked={transactionDetails.isFirstTimeBuyers}
+            onChange={handleChange}
+          />
+          <label className="form-check-label">Is First Time Buyer?</label>
         </div>
-        <button type="submit">Calculate Tax</button>
+        
+        <button type="submit" className="btn btn-primary">Calculate Tax</button>
       </form>
 
       {calculatedTax !== null && (
-        <div>
-          <h2>Calculated Tax: {calculatedTax}</h2>
+        <div className="mt-4">
+          <h2 className="text-center">Calculated Tax: {calculatedTax}</h2>
         </div>
       )}
     </div>
