@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace LBTT_Calculator
 {
-    public struct TransactionDetails
+    public class TransactionDetails
     {
         private double purchasePrice;
         public double PurchasePrice { get; }

@@ -18,6 +18,7 @@ namespace LBTT_Calculator
             taxBandsList.Add(new TaxBandWithRange(5, 250001, 325000));
             taxBandsList.Add(new TaxBandWithRange(10, 325001, 750000));
             taxBandsList.Add(new TaxBandOneLimit(12, 750001));
+            taxBandsList.Add(new ADSTaxBand(6, 40000));
 
             return taxBandsList;
         }

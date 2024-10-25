@@ -1,0 +1,6 @@
+@LBTTCalculatorAPI_HostAddress = http://localhost:5069
+
+GET {{LBTTCalculatorAPI_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

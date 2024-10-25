@@ -1,0 +1,56 @@
+.container {
+  max-width: 600px;
+  margin: auto;
+}
+
+h1 {
+  margin-bottom: 20px;
+}
+
+.form-check-label {
+  margin-left: 10px;
+}
+
+.form-check-input {
+  width: 40px; /* Adjust toggle width */
+  height: 20px; /* Adjust toggle height */
+}
+
+.form-check-input:checked {
+  background-color: #007bff; /* Change color when checked */
+  border-color: #007bff; /* Change border color when checked */
+}
+
+.form-check-input:checked:focus {
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25); /* Focus shadow effect */
+}
+
+.form-check-input:disabled {
+  background-color: #e9ecef; /* Background for disabled state */
+}
+
+.btn {
+  width: 100%; /* Full-width button */
+  padding: 10px; /* Padding */
+}
+
+.mb-3 {
+  margin-bottom: 1.5rem; /* Margin adjustments */
+}
+
+
+.result-box {
+  background: linear-gradient(135deg, #e0f7fa, #b2ebf2);
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  margin-left: 20px; /* Space between form and result box */
+  flex: 1; /* Allow box to grow */
+}
+
+.result-box h2 {
+  margin: 0; /* Remove margin from heading */
+  font-size: 1.5rem; /* Match font size with form inputs */
+  font-weight: 500; /* Match font weight */
+  color: #333; /* Darker text color for better readability */
+}
