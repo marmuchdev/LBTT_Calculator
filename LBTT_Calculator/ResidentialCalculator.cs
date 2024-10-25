@@ -12,13 +12,10 @@ namespace LBTT_Calculator
     {
         private LBTTTaxCalulator calc;
         private List<ITaxBand> taxBandsList = new List<ITaxBand>();
-        private ITaxBand ADStaxBand;
-
         public ResidentialCalculator()
         {
             this.taxBandsList = new TaxBandFactory().CreateStandard();
             calc = new LBTTTaxCalulator(new OutputFactory().Create(), taxBandsList);
-            this.ADStaxBand = new TaxBandFactory().CreateADS();
         }
 
         public double CalculateTax(TransactionDetails t)
@@ -32,10 +29,6 @@ namespace LBTT_Calculator
                 Console.WriteLine($"Tax from band: {taxBand.Apply(t)}");
                 totalTax = totalTax + taxBand.Apply(t);
             }
-            double ADSamount = t.ADSamount;
-            totalTax = totalTax + ADStaxBand.Apply(t);
-            Console.WriteLine($"Tax from ADS: {ADStaxBand.Apply(t)}");
-
             Console.WriteLine($"Total Tax after all bands: {totalTax}");
 
             return totalTax;
