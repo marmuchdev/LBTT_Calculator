@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LBTT_Calculator", "LBTT_Cal
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tests", "Tests\Tests.csproj", "{8B818D31-B08E-4ADC-8AFA-0F00D6AB77CF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LBTTCalculatorAPI", "LBTTCalculatorAPI\LBTTCalculatorAPI.csproj", "{3469D2B7-1A59-4ED1-A891-B9C2600FD2DD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LBTTCalculatorAPI", "LBTTCalculatorAPI\LBTTCalculatorAPI.csproj", "{3469D2B7-1A59-4ED1-A891-B9C2600FD2DD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

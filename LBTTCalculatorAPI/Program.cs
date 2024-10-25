@@ -1,5 +1,5 @@
 using LBTT_Calculator;
-using Microsoft.VisualStudio.TestPlatform.CommunicationUtilities.Serialization;
+using System.Text.Json;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -18,29 +18,26 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+//Handlers
+var handlePostResidential = (TransactionDetails t) =>
+{
+    if (t == null)
+    {
+        return Results.BadRequest("Invalid data.");
+    }
+    var stdCalc = new TaxCalculatorFactory().CreateResidential();
+    TransactionDetails temp = t;
+    double result = stdCalc.CalculateTax(t);
+
+    return Results.Ok(result);
+};
+
 app.UseHttpsRedirection();
 
 app.MapGet("/", () => "Hello World");
-app.MapGet("/residential/{purchasePrice}", (double purchasePrice) => {
-    TransactionDetails t = new TransactionDetails(purchasePrice, 0, false);
 
-    return Results.Ok(t); 
-});
-
-//app.MapPost("/residential", (TransactionDetails t) =>
-//{
-//    var stdCalc = new TaxCalculatorFactory().CreateResidential().CalculateTax(t);
-
-//    return stdCalc;
-//});
-
-app.MapPost("/residential", async (TransactionDetails t) =>
-{
-    var stdCalc = new TaxCalculatorFactory().CreateResidential();
-    double result =stdCalc.CalculateTax(t);
-
-    return Results.Ok(result);
-});
+//Routes
+app.MapPost("/residential", handlePostResidential);
 
 app.Run();
 

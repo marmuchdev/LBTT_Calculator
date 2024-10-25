@@ -13,7 +13,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\LBTT_Calculator\LBTT_Calculator.csproj" />
-    <ProjectReference Include="..\Tests\Tests.csproj" />
   </ItemGroup>
 
 </Project>
