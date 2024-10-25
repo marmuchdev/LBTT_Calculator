@@ -84,7 +84,7 @@ namespace Tests
             bool FirstTimeBuyers = true;
 
             TransactionDetails t = new TransactionDetails(taxableAmount,ADSAmount,!FirstTimeBuyers);
-            var ADSCalcResult = new TaxCalculatorFactory().CreateStandardResidential();
+            var ADSCalcResult = new TaxCalculatorFactory().CreateResidential();
 
             //Act
             var result = ADSCalcResult.CalculateTax(t);
@@ -105,7 +105,7 @@ namespace Tests
             double taxableAmount = 235000;
             double expected = 1800;
 
-            var stdCalc = new TaxCalculatorFactory().CreateStandardResidential();
+            var stdCalc = new TaxCalculatorFactory().CreateResidential();
             TransactionDetails t = new TransactionDetails(taxableAmount, ADSAmount, !FirstTimeBuyers);
 
             //Act
@@ -126,7 +126,7 @@ namespace Tests
             double taxableAmount = 235000;
             double expected = 1200;
 
-            var stdCalc = new TaxCalculatorFactory().CreateStandardResidential();
+            var stdCalc = new TaxCalculatorFactory().CreateResidential();
             TransactionDetails t = new TransactionDetails(taxableAmount, ADSAmount, FirstTimeBuyers);
 
             //Act
@@ -147,7 +147,7 @@ namespace Tests
             double taxableAmount = 235000;
             double expected = 4500;
 
-            var stdCalc = new TaxCalculatorFactory().CreateStandardResidential();
+            var stdCalc = new TaxCalculatorFactory().CreateResidential();
             TransactionDetails t = new TransactionDetails(taxableAmount, ADSAmount, !FirstTimeBuyers);
 
             //Act
@@ -168,7 +168,7 @@ namespace Tests
             double taxableAmount = 875000;
             double expected = 66050;
 
-            var stdCalc = new TaxCalculatorFactory().CreateStandardResidential();
+            var stdCalc = new TaxCalculatorFactory().CreateResidential();
             TransactionDetails t = new TransactionDetails(taxableAmount, ADSAmount, !FirstTimeBuyers);
 
             //Act
@@ -188,7 +188,7 @@ namespace Tests
             double taxableAmount = 875000;
             double expected = 65750;
 
-            var stdCalc = new TaxCalculatorFactory().CreateStandardResidential();
+            var stdCalc = new TaxCalculatorFactory().CreateResidential();
             TransactionDetails t = new TransactionDetails(taxableAmount, ADSAmount, !FirstTimeBuyers);
 
             //Act
@@ -209,7 +209,7 @@ namespace Tests
             double taxableAmount = 875000;
             double expected = 63350;
 
-            var stdCalc = new TaxCalculatorFactory().CreateStandardResidential();
+            var stdCalc = new TaxCalculatorFactory().CreateResidential();
             TransactionDetails t = new TransactionDetails(taxableAmount, ADSAmount, !FirstTimeBuyers);
 
             //Act

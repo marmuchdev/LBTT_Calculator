@@ -8,13 +8,13 @@ using System.Threading.Tasks;
 
 namespace LBTT_Calculator
 {
-    public class StandardCalculator
+    public class ResidentialCalculator
     {
         private LBTTTaxCalulator calc;
         private List<ITaxBand> taxBandsList = new List<ITaxBand>();
         private ITaxBand ADStaxBand;
 
-        public StandardCalculator()
+        public ResidentialCalculator()
         {
             this.taxBandsList = new BandFactory().CreateStandard();
             calc = new LBTTTaxCalulator(new OutputFactory().Create(), taxBandsList);

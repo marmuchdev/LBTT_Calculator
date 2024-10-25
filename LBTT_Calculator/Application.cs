@@ -16,7 +16,7 @@ class Application
         IOutput output = new OutputFactory().Create();
         TransactionDetails t = new TransactionDetails(875000, 0, true);
 
-        var stdCalc = new TaxCalculatorFactory().CreateStandardResidential();
+        var stdCalc = new TaxCalculatorFactory().CreateResidential();
         var result = stdCalc.CalculateTax(t);
         Console.WriteLine("Standard Calculator LBTT = "+ result);
 

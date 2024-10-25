@@ -145,7 +145,7 @@ namespace Tests
 
                 TransactionDetails t = new TransactionDetails(taxableAmount, ADSAmount, !FirstTimeBuyers);
 
-                var stdCalc = new TaxCalculatorFactory().CreateStandardResidential();
+                var stdCalc = new TaxCalculatorFactory().CreateResidential();
 
 
                 //Act
@@ -169,7 +169,7 @@ namespace Tests
                 bool FirstTimeBuyers = true;
 
 
-                var ADSCalcResult = new TaxCalculatorFactory().CreateStandardResidential();
+                var ADSCalcResult = new TaxCalculatorFactory().CreateResidential();
                 TransactionDetails t = new TransactionDetails(taxableAmount, ADSAmount, !FirstTimeBuyers);
 
                 //Act
@@ -192,7 +192,7 @@ namespace Tests
                 bool FirstTimeBuyers = true;
 
                 TransactionDetails t = new TransactionDetails(taxableAmount, ADSAmount, !FirstTimeBuyers);
-                var ADSCalcResult = new TaxCalculatorFactory().CreateStandardResidential();
+                var ADSCalcResult = new TaxCalculatorFactory().CreateResidential();
 
                 //Act
                 var result = ADSCalcResult.CalculateTax(t);
