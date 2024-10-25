@@ -8,6 +8,15 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+//CORS services
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowSpecificOrigin",
+        builder => builder.WithOrigins("http://localhost:5173") 
+                          .AllowAnyHeader()
+                          .AllowAnyMethod());
+});
+
 var app = builder.Build();
 TransactionDetails t1 = new TransactionDetails(12,45,false);
 
@@ -17,6 +26,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
 
 //Handlers
 var handlePostResidential = (TransactionDetails t) =>
@@ -32,6 +42,8 @@ var handlePostResidential = (TransactionDetails t) =>
     return Results.Ok(result);
 };
 
+// Use CORS
+app.UseCors("AllowSpecificOrigin");
 app.UseHttpsRedirection();
 
 app.MapGet("/", () => "Hello World");
