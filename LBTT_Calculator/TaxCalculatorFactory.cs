@@ -11,8 +11,6 @@ namespace LBTT_Calculator
     public class TaxCalculatorFactory
     {
 
-        public List<ITaxBand> taxBandsList { get; set; }
-
         public ResidentialCalculator CreateResidential()
         {
             return new ResidentialCalculator();
