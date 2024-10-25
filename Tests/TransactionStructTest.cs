@@ -51,31 +51,12 @@ namespace Tests
             //Act
             double result = taxBandNoRange.Apply(t);
 
-            //Assign
+            //Assert
             Assert.That(result, Is.EqualTo(expected));
         }
 
         [Test]
-        public void CalculateTaxFor875000UsingADSSupplementCalculatorWithADSamountAboveTresholdOf40000()
-        {
-            //Arrange
-            double taxableAmount = 875000;
-            double ADSAmount = 45000;
-            double expected = 66050;
-            bool FirstTimeBuyers = true;
-
-            TransactionDetails t = new TransactionDetails(taxableAmount,ADSAmount,!FirstTimeBuyers);
-            var ADSCalcResult = new TaxCalculatorFactory().CreateAdditionalDwellingSupplementCalculator();
-
-            //Act
-            var result = ADSCalcResult.CalculateTax(taxableAmount, ADSAmount);
-
-            //Assign
-            Assert.That(result, Is.EqualTo(expected));
-
-        }
-        [Test]
-        public void Apply2PCTaxBandForTaxBandNWithRangeBetween145001And250000WithTaxableAmount145000()
+        public void Apply2PCTaxBandForTaxBandWithRangeBetween145001And250000WithTaxableAmount145000()
         {
             //Arrange
             double taxableAmount = 235000;
@@ -89,12 +70,33 @@ namespace Tests
             //Act
             double result = taxBandWithRange.Apply(t);
 
-            //Assign
+            //Assert
             Assert.That(result, Is.EqualTo(expected));
         }
 
         [Test]
-        public void CalculateTaxFor235000UsingStandardCalculator()
+        public void CalculateTaxFor875000WithADSamountAboveTresholdOf40000()
+        {
+            //Arrange
+            double taxableAmount = 875000;
+            double ADSAmount = 45000;
+            double expected = 66050;
+            bool FirstTimeBuyers = true;
+
+            TransactionDetails t = new TransactionDetails(taxableAmount,ADSAmount,!FirstTimeBuyers);
+            var ADSCalcResult = new TaxCalculatorFactory().CreateStandardResidential();
+
+            //Act
+            var result = ADSCalcResult.CalculateTax(t);
+
+            //Assert
+            Assert.That(result, Is.EqualTo(expected));
+
+        }
+
+
+        [Test]
+        public void CalculateTaxFor235000()
         {
             //Arrange
             double ADSAmount = 0;
@@ -109,13 +111,34 @@ namespace Tests
             //Act
             var result = stdCalc.CalculateTax(t);
 
-            //Assign
+            //Assert
             Assert.That(result, Is.EqualTo(expected));
 
         }
 
         [Test]
-        public void CalculateTaxFor235000WithADSOf45000UsingStandardResidentialCalculator()
+        public void CalculateTaxFor235000WithFirstTimeBuyersRelief()
+        {
+            //Arrange
+            double ADSAmount = 0;
+            bool FirstTimeBuyers = true;
+
+            double taxableAmount = 235000;
+            double expected = 1200;
+
+            var stdCalc = new TaxCalculatorFactory().CreateStandardResidential();
+            TransactionDetails t = new TransactionDetails(taxableAmount, ADSAmount, FirstTimeBuyers);
+
+            //Act
+            var result = stdCalc.CalculateTax(t);
+
+            //Assert
+            Assert.That(result, Is.EqualTo(expected));
+
+        }
+
+        [Test]
+        public void CalculateTaxFor235000WithADSOf45000()
         {
             //Arrange
             double ADSAmount = 45000;
@@ -130,13 +153,13 @@ namespace Tests
             //Act
             var result = stdCalc.CalculateTax(t);
 
-            //Assign
+            //Assert
             Assert.That(result, Is.EqualTo(expected));
 
         }
 
         [Test]
-        public void CalculateTaxFor875000WithADSOf45000UsingStandardResidentialCalculator()
+        public void CalculateTaxFor875000WithADSOf45000()
         {
             //Arrange
             double ADSAmount = 45000;
@@ -151,12 +174,12 @@ namespace Tests
             //Act
             var result = stdCalc.CalculateTax(t);
 
-            //Assign
+            //Assert
             Assert.That(result, Is.EqualTo(expected));
 
         }
         [Test]
-        public void CalculateTaxFor875000WithADSOf40000UsingStandardResidentialCalculator()
+        public void CalculateTaxFor875000WithADSOf40000()
         {
             //Arrange
             double ADSAmount = 40000;
@@ -171,13 +194,13 @@ namespace Tests
             //Act
             var result = stdCalc.CalculateTax(t);
 
-            //Assign
+            //Assert
             Assert.That(result, Is.EqualTo(expected));
 
         }
 
         [Test]
-        public void CalculateTaxFor875000WithADSOf39999UsingStandardResidentialCalculator()
+        public void CalculateTaxFor875000WithADSOf39999()
         {
             //Arrange
             double ADSAmount = 39999;
@@ -192,7 +215,7 @@ namespace Tests
             //Act
             var result = stdCalc.CalculateTax(t);
 
-            //Assign
+            //Assert
             Assert.That(result, Is.EqualTo(expected));
 
         }

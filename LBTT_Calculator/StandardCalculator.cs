@@ -15,38 +15,45 @@ namespace LBTT_Calculator
         private ITaxBand ADStaxBand;
         private double ADStreshold;
 
-
-
-        public StandardCalculator()
+        public StandardCalculator(List<ITaxBand> taxBandsList)
         {
-            taxBandsList = new List<ITaxBand>();
-            taxBandsList.Add(new TaxBandWithRange(2, 145001, 250000));
-            taxBandsList.Add(new TaxBandWithRange(5, 250001, 325000));
-            taxBandsList.Add(new TaxBandWithRange(10, 325001, 750000));
-            taxBandsList.Add(new TaxBandOneLimit(12, 750001));
+            this.taxBandsList = new BandFactory().CreateStandard();
             calc = new LBTTTaxCalulator(new OutputFactory().Create(), taxBandsList);
+
             this.ADStaxBand = new TaxBandOneLimit(6, 0);
             this.ADStreshold = 40000;
         }
 
-        public double CalculateTax(double purchasePrice)
+
+        public StandardCalculator()
         {
-            double totalTax = 0; 
-            foreach (var taxBand in taxBandsList)
-            {
-                totalTax = totalTax + taxBand.Apply(purchasePrice);
-            }
-            return totalTax;
+            this.taxBandsList = new BandFactory().CreateStandard();
+            calc = new LBTTTaxCalulator(new OutputFactory().Create(), taxBandsList);
+            this.ADStaxBand = new BandFactory().CreateADS();
+            //this.ADStaxBand = new TaxBandOneLimit(6, 0);
+            this.ADStreshold = 40000;
         }
+        //public double CalculateTax(double purchasePrice)
+        //{
+        //    double totalTax = 0; 
+        //    foreach (var taxBand in taxBandsList)
+        //    {
+        //        totalTax = totalTax + taxBand.Apply(purchasePrice);
+        //    }
+        //    return totalTax;
+        //}
 
         public double CalculateTax(TransactionDetails t)
         {
+            if (t.IsFirstTimeBuyers){ taxBandsList = new BandFactory().CreateFTBRelief();}
+            else { taxBandsList = new BandFactory().CreateStandard(); }
             double totalTax = 0;
             foreach (var taxBand in taxBandsList)
             {
-                totalTax = totalTax + taxBand.Apply(t.PurchasePrice);
+                totalTax = totalTax + taxBand.Apply(t);
             }
-            if (t.ADSamount >= this.ADStreshold) return totalTax = totalTax + ADStaxBand.Apply(t.ADSamount);
+            double ADSamount = t.ADSamount;
+            if (t.ADSamount >= this.ADStreshold) return totalTax = totalTax + ADStaxBand.Apply(t);
 
             return totalTax;
         }
